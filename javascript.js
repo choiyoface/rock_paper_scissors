@@ -9,11 +9,25 @@ const getUserChoice=userInput=>{
 }
 
 
-const arr = ['rock', 'paper', 'scissors'];
+//const arr = ['rock', 'paper', 'scissors'];
 
-function getComputerChoice() {
-    console.log(arr[Math.floor(Math.random() * arr.length)]);
+//function getComputerChoice() {
+    //console.log(arr[Math.floor(Math.random() * arr.length)]);
+//}
+
+const getComputerChoice=()=>{
+    const randomNumber = Math.floor(Math.random()*3);
+    switch (randomNumber){
+        case 0:
+            return 'rock';
+        case 1:
+            return 'paper';
+        case 2:
+            return 'scissors';
+    }
 }
+
+
 
 const determineWinner=(playerSelection,computerSelection)=>{
     if (playerSelection===computerSelection){
