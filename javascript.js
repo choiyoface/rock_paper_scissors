@@ -60,6 +60,7 @@ const playGame=()=>{
     console.log ('Computer threw: '+ computerSelection);
     console.log (determineWinner(playerSelection,computerSelection));
 }
-playGame()
-
+for (i=0;i<5;i++){
+    playGame();
+}
 
