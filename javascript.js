@@ -8,6 +8,8 @@ const choiceBtn = document.querySelectorAll(".choiceBtn");
 let playerSelection
 let computerSelection
 let result;
+let pScore = 0;
+let cScore = 0;
 
 
 choiceBtn.forEach(button => button.addEventListener("click", ()=> {
@@ -16,6 +18,7 @@ choiceBtn.forEach(button => button.addEventListener("click", ()=> {
     playerText.textContent = `Player: ${playerSelection}`;
     computerText.textContent = `Computer: ${computerSelection}`;
     resultText.textContent = determineWinner();
+    
 }))
 
 
@@ -35,55 +38,55 @@ const getComputerChoice=()=>{
 }
 
 
+const updateScore = () => {
+    const playerScore = document.querySelector(".player-score p");
+    const computerScore = document.querySelector(".computer-score p");
+    playerScore.textContent = pScore;
+    computerScore.textContent = cScore;
 
+}
 
-function determineWinner(playerSelection,computerSelection){
+function determineWinner(){
     if (playerSelection===computerSelection){
         return "It is a draw!";
     }
-    else if(computerSelection=='Rock'){
-        return(playerSelection == "Paper") ? "You Win" : "You Lose";
-    }
-    else if(computerSelection=='Paper'){
-        return(playerSelection == "Scissors") ? "You Win" : "You Lose";
-    }
-    else if(computerSelection=='Scissors'){
-        return(playerSelection == "Rock") ? "You Win" : "You Lose";
-    }
+    if(computerSelection=='Rock'){
+        if(playerSelection == "Paper") {
+        pScore+=1;
+        updateScore();
+        return "You Win"; 
         
+      }else {
+        cScore+=1;
+        updateScore()
+        return "You Lose";
+        
+    }}
+    if(computerSelection=='Paper'){
+        if(playerSelection == "Scissors"){
+        pScore+=1;
+        updateScore();
+        return "You Win"; 
+        
+      }else {
+        cScore+=1;
+        updateScore();
+        return "You Lose";
+        
+    }}
+    if(computerSelection=='Scissors'){
+        if(playerSelection == "Rock"){
+        pScore+=1;
+        updateScore();
+        return "You Win"; 
+        
+      }else {
+        cScore+=1;
+        updateScore();
+        return "You Lose";
+        
+    }}
+     
 }
-
-
-
-/*function getUserChoice(){
-    const rock = document.getElementById("rock");
-    const paper = document.getElementById("paper");
-    const scissors = document.getElementById("scissors");
-
-    rock.addEventListener('click',e => {
-        playGame('rock')
-    })
-    paper.addEventListener('click',e => {
-        playGame('paper')
-    })
-    scissors.addEventListener('click',e => {
-        playGame('scissors')
-    })
-}
-
-
-
-
-const playGame=(playerSelection)=>{
-    const computerSelection = getComputerChoice();
-    console.log ('You threw: '+ playerSelection);
-    console.log ('Computer threw: '+ computerSelection);
-    console.log (determineWinner(playerSelection,computerSelection));
-}
-
-
-getUserChoice();*/
-
-
 
 
