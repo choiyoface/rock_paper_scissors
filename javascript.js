@@ -39,7 +39,36 @@ const determineWinner=(playerSelection,computerSelection)=>{
         }
     }
 }
-const getUserChoice = () => {
+function getUserChoice(){
+    const rock = document.getElementById("rock");
+    const paper = document.getElementById("paper");
+    const scissors = document.getElementById("scissors");
+
+    rock.addEventListener('click',e => {
+        console.log('rock')
+    })
+    paper.addEventListener('click',e => {
+        console.log('paper')
+    })
+    scissors.addEventListener('click',e => {
+        console.log('scissors')
+    })
+}
+
+const playGame=()=>{
+    const playerSelection=getUserChoice('');
+    const computerSelection=getComputerChoice();
+    console.log ('You threw: '+ playerSelection);
+    console.log ('Computer threw: '+ computerSelection);
+    console.log (determineWinner(playerSelection,computerSelection));
+}
+
+playGame();
+
+
+
+
+/*const getUserChoice = () => {
     let userInput = window.prompt('What is your choice');
     let userChoice = userInput.toLowerCase();
     if (userChoice === 'rock' || userChoice === 'scissors' || userChoice === 'paper') {
@@ -48,26 +77,4 @@ const getUserChoice = () => {
         console.log("Error! Please type: rock, paper, or scissors");
         return null; // Return a default value for invalid input
     }
-};
-
-
-/*const getUserChoice = userInput =>{
-    userInput = window.prompt('What is your choice');
-    userChoice=userInput.toLowerCase();
-    if (userChoice === 'rock'|| userChoice==='scissors' || userChoice==='paper'){
-        return userChoice
-    }else{
-        console.log("Error! please type: rock, paper or scissors");
-    }
-}*/
-
-const playGame=()=>{
-    const playerSelection=getUserChoice('');
-    //cont playerSelection=window.promt('What is your choice')
-    const computerSelection=getComputerChoice();
-    console.log ('You threw: '+ playerSelection);
-    console.log ('Computer threw: '+ computerSelection);
-    console.log (determineWinner(playerSelection,computerSelection));
-}
-
-playGame();
+};*/
