@@ -1,19 +1,6 @@
 
-const getUserChoice=userInput=>{
-    userInput=userInput.toLowerCase();
-    if (userInput === 'rock'|| userInput==='scissors' || userInput==='paper'){
-        return userInput
-    }else{
-        console.log("Error! please type: rock, paper or scissors");
-    }
-}
 
 
-//const arr = ['rock', 'paper', 'scissors'];
-
-//function getComputerChoice() {
-    //console.log(arr[Math.floor(Math.random() * arr.length)]);
-//}
 
 const getComputerChoice=()=>{
     const randomNumber = Math.floor(Math.random()*3);
@@ -52,15 +39,35 @@ const determineWinner=(playerSelection,computerSelection)=>{
         }
     }
 }
+const getUserChoice = () => {
+    let userInput = window.prompt('What is your choice');
+    let userChoice = userInput.toLowerCase();
+    if (userChoice === 'rock' || userChoice === 'scissors' || userChoice === 'paper') {
+        return userChoice;
+    } else {
+        console.log("Error! Please type: rock, paper, or scissors");
+        return null; // Return a default value for invalid input
+    }
+};
+
+
+/*const getUserChoice = userInput =>{
+    userInput = window.prompt('What is your choice');
+    userChoice=userInput.toLowerCase();
+    if (userChoice === 'rock'|| userChoice==='scissors' || userChoice==='paper'){
+        return userChoice
+    }else{
+        console.log("Error! please type: rock, paper or scissors");
+    }
+}*/
 
 const playGame=()=>{
-    const playerSelection=getUserChoice('paper');
+    const playerSelection=getUserChoice('');
+    //cont playerSelection=window.promt('What is your choice')
     const computerSelection=getComputerChoice();
     console.log ('You threw: '+ playerSelection);
     console.log ('Computer threw: '+ computerSelection);
     console.log (determineWinner(playerSelection,computerSelection));
 }
-for (i=0;i<5;i++){
-    playGame();
-}
 
+playGame();
