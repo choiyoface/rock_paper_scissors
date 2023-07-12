@@ -4,7 +4,9 @@ const playerText = document.querySelector("#playerText");
 const computerText = document.querySelector("#computerText");
 const resultText = document.querySelector("#resultText");
 const choiceBtn = document.querySelectorAll(".choiceBtn");
-const finalScore = document.querySelector("#final-score");
+const finalScore = document.querySelector(".final-score");
+const playScreen = document.querySelector(".playScreen");
+
 let playerSelection
 let computerSelection
 let result;
@@ -16,12 +18,11 @@ let finalWinner;
 choiceBtn.forEach(button => button.addEventListener("click", ()=> {
     playerSelection = button.textContent;
     getComputerChoice();
-    playerText.textContent = `Player: ${playerSelection}`;
-    computerText.textContent = `Computer: ${computerSelection}`;
+    playerText.textContent = `${playerSelection}`;
+    computerText.textContent = `${computerSelection}`;
     resultText.textContent = determineWinner();
     
-}))
-
+}));
 
 
 //add and reset score
@@ -32,24 +33,36 @@ const updateScore = () => {
     computerScore.textContent = cScore;
 
     if (pScore === 5 || cScore === 5){
-        resetSCore();
+        fadeOut();
         finalResult();
-        return 
+        fadeIn()
+        resetSCore();
+        return;
     }
 
-}
+};
+
+function fadeOut(){
+    playScreen.classList.add("fadeOut");
+    finalScore.classList.add("fadeIn");
+};
+function fadeIn(){
+    playScreen.classList.add("fadeIn");
+    finalScore.classList.add("fadeOut");
+};
+
 function finalResult(){
     if (pScore > cScore){
         finalScore.textContent = `Final Winner is You`
     }else{
         finalScore.textContent = `Final Winner is Computer`
     }
-}
+};
 
 function resetSCore(){
     pScore = 0;
     cScore = 0;
-}
+};
 
 //determine which is the winner
 function determineWinner(){
