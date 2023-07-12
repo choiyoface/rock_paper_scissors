@@ -1,80 +1,89 @@
 
 
+const playerText = document.querySelector("#playerText");
+const computerText = document.querySelector("#computerText");
+const resultText = document.querySelector("#resultText");
+const choiceBtn = document.querySelectorAll(".choiceBtn");
+
+let playerSelection
+let computerSelection
+let result;
+
+
+choiceBtn.forEach(button => button.addEventListener("click", ()=> {
+    playerSelection = button.textContent;
+    getComputerChoice();
+    playerText.textContent = `Player: ${playerSelection}`;
+    computerText.textContent = `Computer: ${computerSelection}`;
+    resultText.textContent = determineWinner();
+}))
 
 
 const getComputerChoice=()=>{
     const randomNumber = Math.floor(Math.random()*3);
     switch (randomNumber){
         case 0:
-            return 'rock';
+            computerSelection = 'Rock';
+            break;
         case 1:
-            return 'paper';
+            computerSelection ='Paper';
+            break;
         case 2:
-            return 'scissors';
+            computerSelection = 'Scissors';
+            break;
     }
 }
 
 
 
-const determineWinner=(playerSelection,computerSelection)=>{
+
+function determineWinner(playerSelection,computerSelection){
     if (playerSelection===computerSelection){
         return "It is a draw!";
-    }if(playerSelection==='rock'){
-        if(computerSelection==='paper'){
-            return "You lose!Paper beats Rock";
-        }else{
-            return "You Won! Rock beats Scissors";
-        }
-    }if (playerSelection==='paper'){
-        if(computerSelection==='scissors'){
-            return "You lose! Scissors beats Paper";
-        }else{
-            return "You win! Paper beats Rock";
-        }
-    }if (playerSelection==='scissors'){
-        if(computerSelection==='rock'){
-            return "You lose! Rock beats Scissors";
-        }else{
-            return "You win! Scissors beat Paper";
-        }
     }
+    else if(computerSelection=='Rock'){
+        return(playerSelection == "Paper") ? "You Win" : "You Lose";
+    }
+    else if(computerSelection=='Paper'){
+        return(playerSelection == "Scissors") ? "You Win" : "You Lose";
+    }
+    else if(computerSelection=='Scissors'){
+        return(playerSelection == "Rock") ? "You Win" : "You Lose";
+    }
+        
 }
-function getUserChoice(){
+
+
+
+/*function getUserChoice(){
     const rock = document.getElementById("rock");
     const paper = document.getElementById("paper");
     const scissors = document.getElementById("scissors");
 
     rock.addEventListener('click',e => {
-        console.log('rock')
+        playGame('rock')
     })
     paper.addEventListener('click',e => {
-        console.log('paper')
+        playGame('paper')
     })
     scissors.addEventListener('click',e => {
-        console.log('scissors')
+        playGame('scissors')
     })
 }
 
-const playGame=()=>{
-    const playerSelection=getUserChoice('');
-    const computerSelection=getComputerChoice();
+
+
+
+const playGame=(playerSelection)=>{
+    const computerSelection = getComputerChoice();
     console.log ('You threw: '+ playerSelection);
     console.log ('Computer threw: '+ computerSelection);
     console.log (determineWinner(playerSelection,computerSelection));
 }
 
-playGame();
+
+getUserChoice();*/
 
 
 
 
-/*const getUserChoice = () => {
-    let userInput = window.prompt('What is your choice');
-    let userChoice = userInput.toLowerCase();
-    if (userChoice === 'rock' || userChoice === 'scissors' || userChoice === 'paper') {
-        return userChoice;
-    } else {
-        console.log("Error! Please type: rock, paper, or scissors");
-        return null; // Return a default value for invalid input
-    }
-};*/
