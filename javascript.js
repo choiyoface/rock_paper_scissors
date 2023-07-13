@@ -33,23 +33,18 @@ const updateScore = () => {
     computerScore.textContent = cScore;
 
     if (pScore === 5 || cScore === 5){
-        fadeOut();
+        fadeInAndOut();
         finalResult();
-        fadeIn()
         resetSCore();
         return;
     }
 
 };
 
-function fadeOut(){
+function fadeInAndOut(){
     playScreen.classList.add("fadeOut");
     finalScore.classList.add("fadeIn");
-};
-function fadeIn(){
-    playScreen.classList.add("fadeIn");
-    finalScore.classList.add("fadeOut");
-};
+}
 
 function finalResult(){
     if (pScore > cScore){
